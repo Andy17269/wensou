@@ -1,0 +1,10 @@
+.home_icons{background-image: url("../images/home_icon.png"); display: inline-block;}
+.index-search {width: 700px; margin: 200px auto; }
+.index-search .search-select{color: #444; text-decoration: none;}
+.index-search .home_icons{width: 97px; height: 35px;}
+.index-search .icon-baidu{background-position: 0 0;}
+.index-search .icon-360{background-position: -100px 0;}
+.index-search .icon-bing{background-position: -200px 0;}
+.index-search .icon-google{background-position: 0 -40px;}
+.index-search .icon-youdao{background-position: -100px -40px;}
+.index-search .icon-sougou{background-position: -200px -40px;}

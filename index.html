@@ -1,54 +1,245 @@
 ﻿<html>
-
 <head> 
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-  <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no"> 
-  
-  <title>Wen搜索</title> 
-  <link rel="icon" href="./mario.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="./mario.ico" type="image/x-icon">
+<!--编码设置-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no"> 
+<!--诗词API调用-->
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<!--页面标题-->
+<title>Wen搜索</title> 
+<meta name=”description” content=”Wen搜索，给你一个简单的主页。每日一图，让你的主页变得多彩缤纷。还有每日诗词，自定义选项......” />
+<meta http-equiv=”Cache-Control” content=”no-transform” />
+<meta http-equiv=”Cache-Control” content=”no-siteapp” />
+<meta name=”applicable-device” content=”pc”>
+<meta name=”MobileOptimized” content=”width”/>
+<meta name=”HandheldFriendly” content=”true”/>
+<!--页面图标-->
+<link rel="icon" href="./mario.ico" type="image/x-icon">
+<link rel="shortcut icon" href="./mario.ico" type="image/x-icon">
+<!--调用CSS-->
+<link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+<!--背景拉伸设置-->
+<style>
+.span {
+	position:relative;
+	padding:5px;
+}
+.tip {
+	display:block;
+	background:#f00;
+	border-radius:50%;
+	width:8px;
+	height:8px;
+	top:0px;
+	right:0px;
+	position:absolute;
+}
+</style>
+<!--字体设置-->
+<style>
+* {
+	font-family:"Scerh eng",Scerh,"Scerh Kor","Scerh Geo"
+}
+</style>
+<!--调用CSS-->
+<link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+<!--底部设置-->
+<style>
+.pop-click,.pop-btn {
+	padding:10px 15px;
+	border:1px solid #EEEEEE;
+	background:white;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+.pop-btn {
+	margin-top:15px;
+}
+.pop-cover {
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background:rgba(0,0,0,0.5);
+	z-index:1;
+	display:none;
+}
+.pop {
+	width:20%;
+	position:fixed;
+	top:0;
+	left:50%;
+	transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%);
+	border:1px solid #EEEEEE;
+	text-align:center;
+	background:white;
+	padding:20px;
+	box-shadow:0 0 10px rgba(0,0,0,.5);
+	-webkit-box-shadow:0 0 10px rgba(0,0,0,.5);
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	animation:popv 0.3s both;
+	-moz-animation:popv 0.3s both;
+	-ms-animation:popv 0.3s both;
+	-webkit-animation:popv 0.3s both;
+	z-index:2;
+	opacity:0;
+	display:none;
+}
+@media (max-width:740px) {
+	.pop {
+	width:60%;
+}
+}@keyframes popv {
+	0{top:0;
+}
+to {
+	top:50%;
+	opacity:1;
+}
+}@-webkit-keyframes popv {
+	0{top:0;
+}
+to {
+	top:50%;
+	opacity:1;
+}
+}</style>
 
-  <script type="text/javascript" src="D:\\jQuery\\jquery.js"></script>
-  <style>
+<body class="background_"></body>
+<!--设置页面-->
+<style>
+body{ text-align:center}
+#CSS5{margin:0 auto;width:300px;height:100px}
+</style>
+<!--超链接横线去除-->
+<style>
+ a{
+ text-decoration: none;
+ }
+</style>
+<!--其他设置-->
+<script>
+            document.oncontextmenu = function () { return false; };
+            document.onkeydown = function () {
+                if (window.event && window.event.keyCode == 123) {
+                    event.keyCode = 0;
+                    event.returnValue = false;
+                    return false;
+                }
+            };
+</script>
+</head>
+<body oncontextmenu=self.event.returnValue=false onselectstart="return false">
+<!--时间-->
+<br><br>
+<div style="font-size:80px" class="time" id="CSS5"></div>
+<!--搜索框-->
+<div class="index-search">
+  <form action="https://www.baidu.com/baidu" target="_blank">
+  <div class="input-group">
+	  <div class="input-group-btn">
+		 
+		  <ul class="dropdown-menu">
 
-.search { position: relative; width: 78%; margin: 0px auto; padding-left: 3.4em; font-size: 14px;}
-.search:after{ clear:both;content:'.'; display:block;clear:both;height:0; visibility:hidden; overflow:hidden;}
-
-.search_t { float: left; width: 78%; height: 60px;margin-left: 0px;  margin-top: 20%; padding-left: 20px; padding-right: 20px; font-size: 18px;/* border: 1px solid #cdcdcd; */border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px;}
-.search_b { float: right;  width: 200px; height: 60px;margin-left: 0px;margin-top: 20%;padding-left: 0px; padding-right: 0px; font-size: 18px;/* border: 1px solid #cdcdcd; */border-top-left-radius: 15px; border-bottom-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px;}
-.background_{ background:url("https://s4.ax1x.com/2022/01/10/7VVacD.jpg") no-repeat; background-size: 100%;}
-  </style> 
-</head> 
-
-<body class="background_">
-
-<!--
- <div id="Layer1" style="background_"> 
- <img src="./超级马里奥.jpg" height="100%" width="100%"/> 
- </div> 
--->
-
-<form class="search" action="https://www.baidu.com/baidu" target="_blank">
- <input class="search_t" type=text name=word size=40 placeholder="百度一下，你就知道">
- <input class="search_b" type="submit" value="搜索"/>
-</form>
-
-<!--  
-<div class="search"> 
-      <a href="https://www.baidu.com/baidu" target="_blank">
-          <input class="search_t" name=word type=text placeholder="Input Content" value="" size=40>
-          <input class="search_t" type="submit" value="搜索"/>
-      </a>
-  </div> 
--->
-<div align="right"><p><p><p>
-0.27
+	  </div><!-- /btn-group -->
+	  <input name=tn type=hidden value=baidu>
+	  <input type="text" class="form-control" name=word size=30 id="baidusearch">
+	  <span class="input-group-btn">
+		  <button class="btn btn-info" type="submit">搜索</button>
+	  </span>
+	</div>
+  </form>
 </div>
-<p>
-<a href="http://soudev.wenlei.tk/">体验新版</a>
-<body link="#FFFFFF">
-<body alink="#FFFFFF">
-<body vlink="#FFFFFF">
+<!--调用JS-->
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap.min.js"></script>
+<script type="text/javascript">
+	//绑定输入框，这里是ID
+$("#baidusearch").keydown(function(event){
+  event=document.all?window.event:event;
+  if((event.keyCode || event.which)==13){
+  }
+});
+</script>
+<div align="right">
+</div>
+<!--超链接颜色设置-->
+<body link="#9966FF">
+<body alink="#9966FF">
+<body vlink="#b7ffff">
+<!--诗词设置-->
+<style>
+.botCenter{width:100%; height:35px; line-height:35px; background:#ccc; position:fixed; bottom:0px; left:0px; font-size:14px; color:#000000; text-align:center;}
 
+</style>
+<!--时间显示功能-->
+<script>
+function get10(i) {
+    if (i < 10) {
+        i = "0" + i
+    };
+    return i
+}
+setInterval(function() {
+    var d = new Date()
+    var t = d.getHours()
+    var m = d.getMinutes()
+    var s = d.getSeconds()
+    $(".time").html(get10(t) + ":" + get10(m) + " <font color='#808080' style='font-size:32px'>" + get10(s) + "</font>")
+}, 100)
+</script>
+<!--诗词显示-->
+<div class="botCenter"><span id="jinrishici-sentence no">╰(*°▽°*)╯诗词功能暂对Bata用户开放</span></div> 
+<!--选项界面-->
+<button id="clickBtn" class="pop-click">关于</button>
+<div id="popCover" class="pop-cover"></div>
+<div id="popv" class="pop">
+    <div>关于Wen搜索</div>
+	<div>版本22.1.24 正式版<span class="span"><i class="tip"></i></span><br><a href="https://wenlei.tk/" target="_blank">干净T松鼠</a> 2021-2022&nbsp;&nbsp;<br><p><a href="./SettingsPCls.html">版本历史记录</a></p>/div>
+    <button id="popBtn" class="pop-btn">确定</button><p><a href="https://bata.wensou.tk/"></a></p>
+</div>
+<!--其他-->
+<script>
+document.getElementById('clickBtn').addEventListener('click', function(e) {
+    document.getElementById("popCover").style.display = 'block';
+    document.getElementById("popv").style.display = 'block';
+});
+document.getElementById('popBtn').onclick = function(e) {
+    document.getElementById("popCover").style.display = 'none';
+    document.getElementById("popv").style.display = 'none';
+};
+</script>
+<!--背景图-->
+<style>
+body{
+width:100%;
+height:100%;
+background: url(https://www.guanyujiang.com/api/bingapi.php) no-repeat;
+-moz-background-size: cover; /*背景图片拉伸以铺满全屏*/
+-ms-background-size: cover;
+-webkit-background-size: cover;
+background-size: cover;
+}
+</style>
+<!--
+     |               |              
+  -------         -------           
+ /       \       /       \          
+ \       /       \       /          
+  -------         -------          
+     |               |       新年快乐！
+版本:22.1.24
+时间:2022.1.24z
+By:干净T松鼠  
+-->
 </body>
 </html>
