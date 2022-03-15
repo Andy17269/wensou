@@ -7,12 +7,6 @@
 <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <!--页面标题-->
 <title>Wen搜索</title> 
-<meta name=”description” content=”Wen搜索，给你一个简单的主页。每日一图，让你的主页变得多彩缤纷。还有每日诗词，自定义选项......” />
-<meta http-equiv=”Cache-Control” content=”no-transform” />
-<meta http-equiv=”Cache-Control” content=”no-siteapp” />
-<meta name=”applicable-device” content=”pc”>
-<meta name=”MobileOptimized” content=”width”/>
-<meta name=”HandheldFriendly” content=”true”/>
 <!--页面图标-->
 <link rel="icon" href="./mario.ico" type="image/x-icon">
 <link rel="shortcut icon" href="./mario.ico" type="image/x-icon">
@@ -42,9 +36,6 @@
 	font-family:"Scerh eng",Scerh,"Scerh Kor","Scerh Geo"
 }
 </style>
-<!--调用CSS-->
-<link rel="stylesheet" href="bootstrap.min.css">
-<link rel="stylesheet" href="style.css">
 <!--底部设置-->
 <style>
 .pop-click,.pop-btn {
@@ -115,6 +106,35 @@ to {
 }</style>
 
 <body class="background_"></body>
+<!--天气-->
+<div id="he-plugin-simple"></div>
+<script>
+WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "1",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "FFFFFF",
+    "aqiSize": "16",
+    "weatherIconSize": "22",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "1",
+    "language": "auto",
+    "borderRadius": "8",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "25",
+    "top": "15",
+    "key": "447b75ae3f9f4de89383ddd5da881e32"
+  }
+}
+</script>
+<script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
 <!--设置页面-->
 <style>
 body{ text-align:center}
@@ -198,16 +218,15 @@ setInterval(function() {
 }, 100)
 </script>
 <!--诗词显示-->
-<div class="botCenter"><span id="jinrishici-sentence no">╰(*°▽°*)╯诗词功能暂对Bata用户开放</span></div> 
+<div class="botCenter"><span id="jinrishici-sentence">╰(*°▽°*)╯</span></div> 
 <!--选项界面-->
-<button id="clickBtn" class="pop-click">关于</button>
+<button id="clickBtn" class="pop-click">选项</button>
 <div id="popCover" class="pop-cover"></div>
 <div id="popv" class="pop">
     <div>关于Wen搜索</div>
-	<div>版本22.1.24 正式版<span class="span"><i class="tip"></i></span><br><a href="https://wenlei.tk/" target="_blank">干净T松鼠</a> 2021-2022&nbsp;&nbsp;<br><p><a href="./SettingsPCls.html">版本历史记录</a></p>
-    <button id="popBtn" class="pop-btn">确定</button><p><a href="https://bata.wensou.tk/"></a></p>
+	<div>版本23.02<span class="span"><i class="tip"></i></span><br><a href="https://wenlei.tk/" target="_blank">干净T松鼠</a> 2021-2022&nbsp;&nbsp;<br><a href="./SettingsPC.html">设置</a></div>
+    <button id="popBtn" class="pop-btn">确定</button>
 </div>
-<!--其他-->
 <script>
 document.getElementById('clickBtn').addEventListener('click', function(e) {
     document.getElementById("popCover").style.display = 'block';
@@ -231,14 +250,9 @@ background-size: cover;
 }
 </style>
 <!--
-     |               |              
-  -------         -------           
- /       \       /       \          
- \       /       \       /          
-  -------         -------          
-     |               |       新年快乐！
-版本:22.1.24
-时间:2022.1.24z
+Goodbye!
+版本:23.02
+时间:2022.3.15 
 By:干净T松鼠  
 -->
 </body>
